@@ -1,0 +1,135 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100%;
+  background: #ffffff;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  padding: 20px 16px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.overlayVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #2c3e4e;
+}
+
+.roleGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  button {
+    flex: 1;
+    padding: 6px 0;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+
+    &.activeRole {
+      background: #6e8cab;
+      color: white;
+      border-color: #6e8cab;
+    }
+  }
+}
+
+.divider {
+  margin: 12px 0;
+  border: none;
+  border-top: 1px solid #eef2f6;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  a,
+  .logoutButton {
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #2c3e4e;
+    font-size: 15px;
+    transition: background 0.2s;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+
+    &:hover {
+      background: #eef2f6;
+    }
+  }
+
+  .logoutButton {
+    color: #dc2626;
+    margin-top: 16px;
+    border-top: 1px solid #eef2f6;
+    border-radius: 0;
+    padding-top: 16px;
+
+    &:hover {
+      background: transparent;
+      color: #b91c1c;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: static;
+    transform: translateX(0);
+    width: 240px;
+    box-shadow: none;
+    padding: 24px 16px;
+  }
+
+  .overlay,
+  .closeButton,
+  .roleGroup {
+    display: none;
+  }
+}
