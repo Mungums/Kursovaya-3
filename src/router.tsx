@@ -36,6 +36,10 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
+        path: '/profile',
+        element: <ProfilePage />,
+      },
+      {
         index: true,
         element: <Navigate to="/dashboard" replace />,
       },
