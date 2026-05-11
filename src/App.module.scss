@@ -1,10 +1,6 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+// app.module.scss — очищенная версия
 .app {
+  min-height: 100vh;
   background: #d9e2e8;
   display: flex;
   flex-direction: column;
@@ -26,16 +22,6 @@
   margin: 0 auto;
 }
 
-// Адаптив
-@media (max-width: 768px) {
-  .layout {
-    flex-direction: column;
-  }
-  .content {
-    padding: 20px;
-  }
-}
-// ===== Стили для страниц (общие) =====
 .section {
   display: flex;
   flex-direction: column;
@@ -46,7 +32,7 @@
   background: #ffffff;
   border-radius: 12px;
   padding: 24px 28px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .cardTitle {
@@ -54,6 +40,12 @@
   font-size: 18px;
   font-weight: 700;
   color: #20384d;
+}
+
+.cardDescription {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #5c6775;
 }
 
 // сетки
@@ -83,7 +75,6 @@
   border-radius: 12px;
   padding: 16px 20px;
 }
-
 .infoBlue { background: #eaf3ff; }
 .infoOrange { background: #fff3e5; }
 .infoGreen { background: #ecf9ee; }
@@ -118,7 +109,9 @@
   margin-top: 12px;
 }
 
-.primaryButton, .secondaryButton, .successButton {
+.primaryButton,
+.secondaryButton,
+.successButton {
   border: 0;
   border-radius: 8px;
   padding: 8px 20px;
@@ -127,19 +120,16 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
 .primaryButton {
   background: #2563eb;
   color: white;
   &:hover { background: #1d4ed8; }
 }
-
 .secondaryButton {
   background: #4f6171;
   color: white;
   &:hover { background: #42515f; }
 }
-
 .successButton {
   background: #2ea44f;
   color: white;
@@ -147,13 +137,12 @@
   &:hover { background: #268f43; }
 }
 
-// расписание (для мастера)
+// расписание мастера
 .scheduleList {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-
 .scheduleItem {
   padding: 16px 0;
   display: flex;
@@ -163,18 +152,13 @@
   border-bottom: 1px solid #eef2f6;
   &:last-child { border-bottom: 0; }
 }
-
-.scheduleText {
-  flex: 1;
-}
-
+.scheduleText { flex: 1; }
 .scheduleTitle {
   margin: 0 0 6px;
   font-size: 16px;
   font-weight: 700;
   color: #20384d;
 }
-
 .mutedText {
   margin: 0;
   font-size: 13px;
@@ -188,20 +172,17 @@
   gap: 32px;
   margin-top: 8px;
 }
-
 .subTitle {
   margin: 0 0 16px;
   font-size: 16px;
   font-weight: 700;
   color: #20384d;
 }
-
 .list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-
 .listItem {
   display: flex;
   justify-content: space-between;
@@ -212,105 +193,66 @@
   font-size: 14px;
   color: #20384d;
 }
+.boldText { font-weight: 700; }
 
-.boldText {
-  font-weight: 700;
-}
-
-.app {
-  min-height: 100vh;
-  background: #d9e2e8;
-  display: flex;
-  flex-direction: column;
-}
-
-.layout {
-  display: flex;
-  flex: 1;
-}
-
-.content {
-  flex: 1;
-  padding: 32px 40px;
-  overflow-x: auto;
-}
-
-.profileInfo {
-  p {
-    margin: 8px 0;
-  }
-}
+// профиль и формы
+.profileInfo p { margin: 8px 0; }
 .profileEdit {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-.input, .textarea {
+.input,
+.textarea {
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
+  width: 100%;
 }
 .textarea {
   resize: vertical;
   min-height: 60px;
 }
-
 .bookingForm {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  label {
-    font-weight: 600;
-  }
-  select, input {
+  label { font-weight: 600; }
+  select,
+  input {
     padding: 8px 12px;
     border-radius: 6px;
     border: 1px solid #ccc;
   }
 }
 
-
-// адаптив сеток и блоков
+// адаптивность
 @media (max-width: 1100px) {
-  .twoColumns, .threeColumns, .fourColumns, .bottomGrid {
+  .twoColumns,
+  .threeColumns,
+  .fourColumns,
+  .bottomGrid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 }
-
 @media (max-width: 768px) {
-  .whiteCard {
-    padding: 16px;
-  }
-  .bigValue {
-    font-size: 22px;
-  }
+  .layout { flex-direction: column; }
+  .content { padding: 20px; }
+  .whiteCard { padding: 16px; }
+  .bigValue { font-size: 22px; }
   .scheduleItem {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
-  .successButton {
-    align-self: flex-start;
-  }
+  .successButton { align-self: flex-start; }
 }
-
 @media (max-width: 480px) {
   .infoHeading { font-size: 13px; }
-  .infoText, .scheduleTitle, .listItem { font-size: 12px; }
+  .infoText,
+  .scheduleTitle,
+  .listItem { font-size: 12px; }
   .bigValue { font-size: 20px; }
-}
-
-
-// в App.module.scss
-.cardDescription {
-  margin: 0 0 20px;
-  font-size: 14px;
-  color: #5c6775;
-}
-.bigValue {
-  font-size: 28px;
-  font-weight: 700;
-  margin: 4px 0 0;
 }

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Auth.module.scss';
+import { invoke } from '@tauri-apps/api/core';
 
 export default function RegisterPage() {
   const [fullName, setFullName] = useState('');
@@ -8,6 +9,29 @@ export default function RegisterPage() {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+
+
+  useEffect(() => {
+    handleRegister();
+  })
+
+// Где-то в обработчике отправки формы:
+const handleRegister = async () => {
+  try {
+    const userId = await invoke('create_client', {
+      login: 'test',
+      password: '123',
+      full_name: 'Test User',
+      phone: '+79991234567',
+      email: null
+    });
+    console.log('Создан пользователь с id:', userId);
+    // редирект на дашборд
+  } catch (err) {
+    console.error('Ошибка регистрации:', err);
+  }
+};
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

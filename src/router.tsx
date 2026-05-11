@@ -16,7 +16,6 @@ import DashboardPage from './pages/DashboardPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 export const router = createBrowserRouter([
-  // Публичные маршруты (без авторизации)
   {
     path: '/login',
     element: <LoginPage />,
@@ -25,8 +24,6 @@ export const router = createBrowserRouter([
     path: '/register',
     element: <RegisterPage />,
   },
-
-  // Приватные маршруты (требуют авторизации)
   {
     path: '/',
     element: (
@@ -35,10 +32,6 @@ export const router = createBrowserRouter([
       </ProtectedRoute>
     ),
     children: [
-            {
-        path: '/profile',
-        element: <ProfilePage />,
-      },
       {
         index: true,
         element: <Navigate to="/dashboard" replace />,
@@ -63,8 +56,6 @@ export const router = createBrowserRouter([
         path: 'booking/:id/edit',
         element: <EditBookingForm />,
       },
-
-      // Администраторские маршруты
       {
         path: 'admin/bookings',
         element: <AdminBookingsPage />,
@@ -73,14 +64,10 @@ export const router = createBrowserRouter([
         path: 'admin/booking/:id/edit',
         element: <AdminEditBookingForm />,
       },
-
-      // Маршруты мастера
       {
         path: 'master/schedule',
         element: <MasterSchedulePage />,
       },
-
-      // Маршруты владельца
       {
         path: 'owner/analytics',
         element: <OwnerAnalyticsPage />,
@@ -89,16 +76,12 @@ export const router = createBrowserRouter([
         path: 'owner/settings',
         element: <OwnerSettingsPage />,
       },
-
-      // Любой несуществующий путь внутри приложения -> на дашборд
       {
         path: '*',
         element: <Navigate to="/dashboard" replace />,
       },
     ],
   },
-
-  // Если пользователь попытается перейти по неизвестному пути вне контекста приложения
   {
     path: '*',
     element: <Navigate to="/login" replace />,

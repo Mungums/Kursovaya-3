@@ -1,4 +1,11 @@
-body {
+// src/styles/globals.scss
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #d9e2e8;
 }
