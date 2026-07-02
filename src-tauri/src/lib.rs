@@ -1,5 +1,5 @@
-mod commands;
 mod db;
+mod commands;
 
 use tauri::Manager;
 
@@ -9,19 +9,31 @@ pub fn run() {
         .setup(|app| {
             let handle = app.handle();
             tauri::async_runtime::block_on(async {
-                let pool = db::create_pool().await.expect("Failed to create DB pool");
+                let pool = db::create_pool()
+                    .await
+                    .expect("Не удалось создать подключение к БД");
                 handle.manage(pool);
             });
             Ok(())
         })
+        .plugin(tauri_plugin_shell::init())
+        .plugin(tauri_plugin_fs::init())
         .invoke_handler(tauri::generate_handler![
-            commands::create_client,
-            commands::get_clients,
-            commands::create_appointment,
-            commands::get_revenue_report,
-            commands::get_services,
-            commands::update_client_profile,
+            commands::register_user,
+            commands::login_user,
+            commands::get_profile,
+            commands::update_profile,
+            commands::get_services,       // <-- добавить
+            commands::get_masters,        // <-- добавить 
+            commands::get_masters_for_service,
+            commands::create_appointment,   // <-- добавить (для теста)
+            commands::get_client_appointments,
+            commands::cancel_appointment,
+            commands::get_users,
+            commands::update_user_role,
+            commands::generate_receipt,
+            commands::open_file,
         ])
-        .run(tauri::generate_context!())
+        .run(tauri::generate_context!("tauri.conf.json"))
         .expect("error while running tauri application");
 }

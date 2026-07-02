@@ -1,13 +1,14 @@
-// src/pages/DashboardPage.tsx
+import { useNavigate } from 'react-router-dom';
 import styles from '../App.module.scss';
 
 export default function DashboardPage() {
-  // Здесь позже будут реальные данные из Rust (invoke)
+  const navigate = useNavigate();
+
+  // Моковые данные для демонстрации (позже будут заменены реальными)
   const stats = {
     todayRevenue: 45000,
     todayAppointments: 18,
     freeSlots: 6,
-    weeklyGrowth: '+12%',
   };
 
   return (
@@ -19,7 +20,6 @@ export default function DashboardPage() {
           Используйте меню для навигации.
         </p>
 
-        {/* Быстрая статистика (пример для администратора/владельца) */}
         <div className={styles.threeColumns}>
           <div className={`${styles.infoCard} ${styles.infoGreen}`}>
             <h4 className={styles.infoHeading}>Выручка сегодня</h4>
@@ -35,12 +35,11 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Здесь может быть дополнительная информация, графики, ссылки */}
         <div className={styles.buttonRow}>
-          <button className={styles.primaryButton} onClick={() => window.location.href = '/booking/new'}>
+          <button className={styles.primaryButton} onClick={() => navigate('/booking/new')}>
             + Новая запись
           </button>
-          <button className={styles.secondaryButton} onClick={() => window.location.href = '/my-bookings'}>
+          <button className={styles.secondaryButton} onClick={() => navigate('/my-bookings')}>
             Мои записи
           </button>
         </div>

@@ -1,7 +1,6 @@
-// Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
     dotenvy::dotenv().ok();
-    massage_salon::run();
+    app_lib::run();   // если ваша библиотека называется app_lib
 }

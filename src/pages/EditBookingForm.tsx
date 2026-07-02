@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../App.module.scss';
 
-// Моковые данные записи (по id)
 const mockBooking = {
   id: 1,
   service: 'Расслабляющий массаж',
@@ -19,13 +18,11 @@ export default function EditBookingForm() {
 
   const handleUpdate = (e: React.FormEvent) => {
     e.preventDefault();
-    // Вызов Rust-команды для обновления
     alert(`Запись ${id} обновлена на ${date} ${time}`);
     navigate('/');
   };
 
   const handleCancel = () => {
-    // Вызов отмены записи
     alert(`Запись ${id} отменена`);
     navigate('/');
   };

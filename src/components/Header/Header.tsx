@@ -1,5 +1,7 @@
 // components/Header/Header.tsx
 import styles from './Header.module.scss';
+import { Link } from 'react-router-dom';
+
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -17,7 +19,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
         </div>
         <div className={styles.profile}>
           <div className={styles.avatar} />
-          <span className={styles.profileText}>Профиль</span>
+          <Link to="/profile">Профиль</Link>
         </div>
       </div>
     </header>
