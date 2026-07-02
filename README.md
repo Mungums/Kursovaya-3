@@ -1,3 +1,5 @@
+
+```sql
 -- ====================================================
 -- 1. Создание базы данных (если ещё не создана)
 -- ====================================================
@@ -319,3 +321,4 @@ INSERT INTO rooms (room_number, name) VALUES
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO spa_user;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO spa_user;
 GRANT USAGE ON SCHEMA public TO spa_user;
+```
